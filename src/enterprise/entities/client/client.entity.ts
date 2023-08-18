@@ -1,29 +1,33 @@
+import { Cpf } from "../cpf.valueobject"
+import { Email } from "../email.valueobject"
+import { ClientName } from "./client-name.valueobject"
+
 export class Client {
-	private _firstName: string
-	private _lastName: string
-	private _email: string
-	private _cpf: string
+	private _firstName: ClientName
+	private _lastName: ClientName
+	private _email: Email
+	private _cpf: Cpf
 
 	constructor(firstName: string, lastName: string, email: string, cpf: string) {
-		this._firstName = firstName
-		this._lastName = lastName
-		this._cpf = cpf
-		this._email = email
+		this._firstName = new ClientName(firstName)
+		this._lastName = new ClientName(lastName)
+		this._cpf = new Cpf(cpf)
+		this._email = new Email(email)
 	}
 
 	get fistName () : string { 
-		return this._firstName
+		return this._firstName.value
 	}
 
 	get lastName () : string { 
-		return this._lastName
+		return this._lastName.value
 	}
 
 	get email () : string { 
-		return this._email 
+		return this._email.value 
 	}
 	
 	get cpf () : string { 
-		return this._cpf 
+		return this._cpf.value
 	}
 }
